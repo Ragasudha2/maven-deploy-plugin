@@ -62,7 +62,7 @@ public class DeployMojo
     private static final AtomicInteger READYPROJECTSCOUNTER = new AtomicInteger();
 
     private static final List<ProjectDeployerRequest> DEPLOYREQUESTS =
-        Collections.synchronizedList( new ArrayList<ProjectDeployerRequest>() );
+        Collections.synchronizedList( new ArrayList<>() );
 
     /**
      */
@@ -203,7 +203,7 @@ public class DeployMojo
     }
 
     private void deployProject( ProjectBuildingRequest pbr, ProjectDeployerRequest pir, ArtifactRepository repo )
-        throws MojoFailureException, MojoExecutionException
+        throws MojoExecutionException
     {
         try
         {

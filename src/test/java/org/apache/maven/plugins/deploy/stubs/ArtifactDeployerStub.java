@@ -33,14 +33,12 @@ public class ArtifactDeployerStub
 
     @Override
     public void deploy( ProjectBuildingRequest request, Collection<Artifact> mavenArtifacts )
-        throws ArtifactDeployerException
     {
         // does nothing
     }
 
     @Override
     public void deploy( ProjectBuildingRequest arg0, ArtifactRepository arg1, Collection<Artifact> arg2)
-        throws ArtifactDeployerException
     {
         // does nothing
     }

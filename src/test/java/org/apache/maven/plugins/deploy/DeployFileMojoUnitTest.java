@@ -41,9 +41,7 @@ public class DeployFileMojoUnitTest
 
     public static Test suite()
     {
-        TestSuite suite = new TestSuite( DeployFileMojoUnitTest.class );
-
-        return suite;
+        return new TestSuite( DeployFileMojoUnitTest.class );
     }
 
     MockDeployFileMojo mojo;
@@ -67,7 +65,7 @@ public class DeployFileMojoUnitTest
         mojo = null;
     }
 
-    class MockDeployFileMojo extends DeployFileMojo {
+    static class MockDeployFileMojo extends DeployFileMojo {
         private Model model;
 
         public MockDeployFileMojo(Model model) {
@@ -78,12 +76,13 @@ public class DeployFileMojoUnitTest
             this.model = model;
         }
 
-        protected Model readModel(File pomFile) throws MojoExecutionException {
+        protected Model readModel(File pomFile)
+        {
             return model;
         }
     }
 
-    public void testProcessPomFromPomFileWithParent1() throws MojoExecutionException
+    public void testProcessPomFromPomFileWithParent1()
     {
         mojo.setPomFile( new File( "foo.bar" ) );
 
@@ -98,7 +97,7 @@ public class DeployFileMojoUnitTest
         checkMojoProperties("parentGroup", null, "parentVersion", null);
     }
 
-    public void testProcessPomFromPomFileWithParent2() throws MojoExecutionException
+    public void testProcessPomFromPomFileWithParent2()
     {
         mojo.setPomFile( new File( "foo.bar" ) );
         setMojoModel( mojo.model, null, "artifact", null, null, parent );
@@ -113,7 +112,7 @@ public class DeployFileMojoUnitTest
 
     }
 
-    public void testProcessPomFromPomFileWithParent3() throws MojoExecutionException
+    public void testProcessPomFromPomFileWithParent3()
     {
         mojo.setPomFile( new File( "foo.bar" ) );
         setMojoModel( mojo.model, null, "artifact", "version", null, parent );
